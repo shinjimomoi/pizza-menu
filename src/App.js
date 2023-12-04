@@ -3,7 +3,7 @@ import pizzaData from "./data";
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -12,32 +12,34 @@ function App() {
 }
 
 function Menu() {
+  let counter = 0
   return (
-    <main>
+    <main className="menu">
       <h2>Our Menu</h2>
-      <div>
-        {pizzaData.map((pizza) => <Pizza name={pizza.name} ingredients={pizza.ingredients} price={pizza.price} photoName={pizza.photoName} soldOut={pizza.soldOut}/>)}
-      </div>
-      <Pizza />
+      <ul className="pizzas">
+        {pizzaData.map((pizza) => (<Pizza key={counter++} pizzaObj={pizza}/>))}
+      </ul>
     </main>
   )
 }
 
 function Header() {
   return (
-    <h1>Fast React Pizza CO.</h1>
+    <header className="header footer">
+      <h1>Fast React Pizza CO.</h1>
+    </header>
   )
 }
 
 function Pizza(props) {
+  console.log(props, "props")
   return (
-    <div>
-      <img src={props.photoName} alt="menu" />
-      <h3>{props.name}</h3>
-      <p>{props.ingredients}</p>
-      <p><strong>USD ${props.price},00</strong></p>
-      {props.soldOut ? <p>sold out</p> : null}
-    </div>
+    <li className={`pizza ${props.pizzaObj.soldOut && "sold-out"}`}>
+      <img src={props.pizzaObj.photoName} alt="menu" />
+      <h3>{props.pizzaObj.name}</h3>
+      <p>{props.pizzaObj.ingredients}</p>
+      <p><strong>USD ${props.pizzaObj.price},00</strong></p>
+    </li>
   )
 }
 
