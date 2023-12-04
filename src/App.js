@@ -1,12 +1,14 @@
 import "./App.css";
 import pizzaData from "./data";
+import tags from "./tags";
 
 function App() {
   return (
     <div className="container">
-      <Header />
+      {/* <Header />
       <Menu />
-      <Footer />
+      <Footer /> */}
+      <Card />
     </div>
   );
 }
@@ -49,6 +51,21 @@ function Footer() {
   const isOpen = openHours ? "open" : "closed";
   return (
     <h4>We are {isOpen}</h4>
+  )
+}
+
+function Card() {
+  return (
+    <div className="container-card">
+      <img src={pizzaData[0].photoName} alt="dev"></img>
+      <h1>Shinji Momoi</h1>
+      <p>A skilled developer proficient in various programming languages and frameworks, adept at designing and implementing efficient, scalable, and maintainable software solutions. Possesses strong problem-solving skills, a keen eye for detail..</p>
+      <ul style={ {marginTop: 8}}>
+      {tags.map(tag => (
+        <span style={{backgroundColor: tag.color}}>{tag.name} {tag.icon}</span>
+      ))}
+      </ul>
+    </div>
   )
 }
 

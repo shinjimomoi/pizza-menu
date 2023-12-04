@@ -21,6 +21,17 @@ body {
   padding-bottom: 6rem;
 }
 
+.container-card {
+  width: 400px;
+  height: auto;
+  overflow-x: hidden;
+  padding: 16px;
+  div {
+    display: block;
+    box-sizing: border-box;
+  }
+}
+
 .container {
   max-width: 80rem;
   margin: 0 auto;
